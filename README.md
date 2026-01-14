@@ -70,13 +70,13 @@ Relations:
 ## Screenshots
 Add screenshots here:
 - Login page
-- <img width="888" height="603" alt="image" src="https://github.com/user-attachments/assets/9fc684e9-36a1-4a48-806d-c70b41213b75" />
+  <img width="888" height="603" alt="image" src="https://github.com/user-attachments/assets/9fc684e9-36a1-4a48-806d-c70b41213b75" />
 - Teacher upload page
-- <img width="1565" height="261" alt="image" src="https://github.com/user-attachments/assets/14079fed-9158-4cb4-8934-a43e67983fe7" />
+  <img width="1565" height="261" alt="image" src="https://github.com/user-attachments/assets/14079fed-9158-4cb4-8934-a43e67983fe7" />
 - Content list page
-- <img width="1878" height="884" alt="image" src="https://github.com/user-attachments/assets/f8d5b957-640e-452e-b3fd-0ea0ea22bd26" />
+  <img width="1878" height="884" alt="image" src="https://github.com/user-attachments/assets/f8d5b957-640e-452e-b3fd-0ea0ea22bd26" />
 - Admin user management page
-- <img width="1890" height="886" alt="image" src="https://github.com/user-attachments/assets/2f9492af-07e7-4179-a42a-12a28602c964" />
+  <img width="1890" height="886" alt="image" src="https://github.com/user-attachments/assets/2f9492af-07e7-4179-a42a-12a28602c964" />
 
 ## Getting Started (Local)
 1. Clone the repo
