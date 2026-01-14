@@ -55,18 +55,6 @@ Relations:
 - users (1) -> (many) notes/assignments (teacher_id references users.id)
 - users (1) -> (many) polls (created_by references users.id)
 
-## API Endpoints (Example)
-> Update to match your actual routes.
-
-- POST /api/login
-- POST /api/register (student)
-- POST /api/admin/create-user
-- DELETE /api/admin/delete-user
-- POST /api/teacher/upload-note
-- GET /api/notes
-- GET /api/notes/{id}/download
-- DELETE /api/polls/{id}
-
 ## Screenshots
 Add screenshots here:
 - Login page
