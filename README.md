@@ -76,6 +76,7 @@ flowchart TD
   F -->|S| I[Student Features]
   H --> J[Content / Assessment / Polling]
   I --> K[Content Download / Submissions]
+```
 
 ---
 
