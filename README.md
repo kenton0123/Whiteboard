@@ -86,32 +86,38 @@ Stores login identity and profile fields.
 
 - `ID` (PK) — used for login account (e.g. A1/T1/S1)
 - `Name`, `Pw` (bcrypt hash), `email`, `Last_login_time`, `saftyquestion`, `Answer`
-files
+  
+`files`
 Stores teacher-uploaded materials (notes/assignments).
 
-id (PK), filename, filepath, title, file_type, deadline, created_at
-file_type examples: notes, assessment
-submissions
+- `id` (PK), `filename`, `filepath`, `title`, `file_type`, `deadline`, `created_at`
+- `file_type` examples: `notes`, `assessment`
+
+`submissions`
 Stores student submissions and marks.
 
-id (PK), student_id, file_name, file_path, deadline, mark, submitted_at, assessment_id
-Logical relation: submissions.assessment_id -> files.id (where files.file_type = 'assessment')
-activities
+- `id` (PK), `student_id`, `file_name`, `file_path`, `deadline`, `mark`, `submitted_at`, `assessment_id`
+- Logical relation: `submissions.assessment_id` -> `files.id` (`where files.file_type = 'assessment'`)
+
+`activities`
 Calendar items.
 
-id (PK), type (important/upcoming/recent), title, course, description, due_date, created_at
-discuss
+- `id` (PK), `type` (important/upcoming/recent), `title`, `course`, `description`, `due_date`, `created_at`
+
+`discuss`
 Forum messages.
 
-dis_id (PK), com_time, studentid, msag
-Logical relation: discuss.studentid -> user.ID
-polls / poll_answers
+- `dis_id` (PK), `com_time`, `studentid`, `msag`
+- Logical relation: `discuss.studentid` -> `user.ID`
+
+`polls` / `poll_answers`
 Poll and poll answers.
 
-polls: id (PK), title, description
-poll_answers: id (PK), poll_id, title, votes
-Logical relation: poll_answers.poll_id -> polls.id
-mermaid
+- `polls`: `id` (PK), `title`, `description`
+- `poll_answers`: `id` (PK), `poll_id`, `title`, `votes`
+- Logical relation: `poll_answers.poll_id` -> `polls.id`
+
+```mermaid
 erDiagram
   USER ||--o{ DISCUSS : posts
   POLLS ||--o{ POLL_ANSWERS : has
