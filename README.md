@@ -66,7 +66,7 @@ Profile, Calendar, Content, Forum, Assessment, About Us, Polling, Main Page, Adm
 
 ```mermaid
 flowchart TD
-  A[Login Page] -->|POST user.ID + password| B[Auth (PHP)]
+  A[Login Page] -->|POST user.ID + password| B[Auth PHP]
   B --> C{Valid?}
   C -->|No| D[Error Message]
   C -->|Yes| E[Create Session: user_id]
