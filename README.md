@@ -117,6 +117,7 @@ Poll and poll answers.
 - `poll_answers`: `id` (PK), `poll_id`, `title`, `votes`
 - Logical relation: `poll_answers.poll_id` -> `polls.id`
 
+
 ```mermaid
 erDiagram
   USER ||--o{ DISCUSS : posts
@@ -196,3 +197,24 @@ Example:
 - <img width="1900" height="785" alt="image" src="https://github.com/user-attachments/assets/4e74301c-fb08-49ce-b63c-37b2725d4827" />
 - <img width="1881" height="944" alt="image" src="https://github.com/user-attachments/assets/eeef9d6e-e9a4-44e9-9167-05b8b782ff03" />
 - <img width="1672" height="275" alt="image" src="https://github.com/user-attachments/assets/492d7151-f82b-4815-a2ab-f149553937f6" />
+
+---
+
+## Security Notes
+- Passwords are stored as bcrypt hashes.
+- Session checks are applied to protected pages.
+
+---
+
+## Test Accounts (Demo)
+| Role    | Username | Password      |
+|---------|----------|---------------|
+| Student | S1       | a32165487A     |
+| Student | S2       | a12345678A     |
+| Teacher | T3       | 12312312aA     |
+| Admin   | A1       | 12345678aA     |
+
+---
+
+## License
+MIT
