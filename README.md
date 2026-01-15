@@ -80,12 +80,12 @@ flowchart TD
 
 ---
 
-Database Schema (gp.sql)
-user
+## Database Schema
+'user'
 Stores login identity and profile fields.
 
-ID (PK) — used for login account (e.g. A1/T1/S1)
-Name, Pw (bcrypt hash), email, Last_login_time, saftyquestion, Answer
+- 'ID' (PK) — used for login account (e.g. A1/T1/S1)
+- 'Name', 'Pw' (bcrypt hash), 'email', 'Last_login_time', 'saftyquestion', 'Answer'
 files
 Stores teacher-uploaded materials (notes/assignments).
 
