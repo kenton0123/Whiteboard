@@ -183,13 +183,16 @@ erDiagram
     datetime due_date
     timestamp created_at
   }
+```
 
-Screenshots
-Place images under docs/screenshots/ and embed them here.
+---
+
+## Screenshots
 
 Example:
 
-docs/screenshots/login.png
-docs/screenshots/admin.png
-docs/screenshots/content.png
-docs/screenshots/assessment.png
+- <img width="681" height="526" alt="image" src="https://github.com/user-attachments/assets/18c9506e-1fd1-4fab-9ab5-a4481c9951d9" />
+- <img width="2198" height="687" alt="image" src="https://github.com/user-attachments/assets/0f56b5be-ad61-4f93-8e49-39a5859f01db" />
+- <img width="1900" height="785" alt="image" src="https://github.com/user-attachments/assets/4e74301c-fb08-49ce-b63c-37b2725d4827" />
+- <img width="1881" height="944" alt="image" src="https://github.com/user-attachments/assets/eeef9d6e-e9a4-44e9-9167-05b8b782ff03" />
+- <img width="1672" height="275" alt="image" src="https://github.com/user-attachments/assets/492d7151-f82b-4815-a2ab-f149553937f6" />
