@@ -1,21 +1,27 @@
-# Whiteboard — Study Platform for Teachers & Students
 
-A PHP/MySQL study platform that supports role-based access (Admin/Teacher/Student), student registration, and learning materials sharing.
+A PHP/MySQL study platform that supports **session-based login**, **student registration**, and role-based features for **Admin / Teacher / Student**.  
+Role is determined by the **first character of user ID**:
+- `A` = Admin (e.g. A1)
+- `T` = Teacher (e.g. T1)
+- `S` = Student (e.g. S1)
 
 ## Live Demo
 - Demo: https://47.129.150.138/whiteboard/login.php
 
 ## Tech Stack
-- Backend: PHP (RESTful APIs)
-- Database: MySQL (phpMyAdmin)
+- Backend: PHP (POST + Sessions), REST-style endpoints
+- Database: MySQL / MariaDB (phpMyAdmin)
 - Frontend: HTML, CSS, JavaScript (basic)
-- Tools: Git/GitHub
+- Tools: Git, GitHub
+
+---
 
 ## Key Features
+
 ### Authentication & Roles
+- Login using `user.ID` + password (PHP sessions)
 - Student registration
-- Role-based login: Admin / Teacher / Student
-- Access control by role (permissions)
+- Role-based access control via ID prefix (A/T/S)
 
 ### Admin
 - Create teacher accounts
@@ -23,59 +29,50 @@ A PHP/MySQL study platform that supports role-based access (Admin/Teacher/Studen
 - Delete polls
 
 ### Teacher
-- Upload notes / assignments
-- Delete notes / assignments in content page
+- Upload notes and assignments
+- Delete notes/assignments in Content page
 - Delete polls
 
 ### Student
-- Download notes / assignments published by teachers
+- Download notes/assignments published by teachers
+- Submit assignments (upload submissions)
+
+### Forum / Discuss
+- Students post messages with timestamp
+
+### Calendar / Activities
+- Show important/upcoming/recent activities with due date
+
+### Pages
+Profile, Calendar, Content, Forum, Assessment, About Us, Polling, Main Page, Admin Page
+
+---
 
 ## System Design (High-level)
-### Login / Authorization Flow
-1. User registers (student) or is created by admin (teacher/student)
-2. User logs in with username/password
-3. Server verifies credentials and role
-4. System grants access to pages/actions based on role (Admin/Teacher/Student)
 
-### Core Modules
-- Auth: login, registration, session handling
-- Content: notes/assignments upload & listing & download
-- Admin panel: account management
-- Poll: create/view/delete (delete allowed for Admin/Teacher)
+### Login & Authorization Flow
+1. User submits login form via **POST** (`user.ID` + password)
+2. Server verifies credentials against table `user`
+3. On success, server creates a **PHP session** (e.g. `$_SESSION["user_id"]`)
+4. Each protected page checks session before access
+5. Role is determined by **first character of `$_SESSION["user_id"]`**
+   - Admin-only actions/pages are restricted to IDs starting with `A`
+   - Teacher actions restricted to IDs starting with `T`
+   - Student actions restricted to IDs starting with `S`
 
-## Database Schema (Simplified)
-> Replace field names to match your real tables.
+### Data Transfer Between Pages
+- User actions and forms use **POST**
+- User identity / login state is stored in **PHP sessions**
 
-- users(id, username, password_hash, role, created_at)
-- notes(id, teacher_id, title, file_path, created_at)
-- assignments(id, teacher_id, title, file_path, created_at)
-- polls(id, created_by, question, created_at)
-
-Relations:
-- users (1) -> (many) notes/assignments (teacher_id references users.id)
-- users (1) -> (many) polls (created_by references users.id)
-
-## Screenshots
-Add screenshots here:
-- Login page
-  <img width="888" height="603" alt="image" src="https://github.com/user-attachments/assets/9fc684e9-36a1-4a48-806d-c70b41213b75" />
-- Teacher upload page
-  <img width="1565" height="261" alt="image" src="https://github.com/user-attachments/assets/14079fed-9158-4cb4-8934-a43e67983fe7" />
-- Content list page
-  <img width="1878" height="884" alt="image" src="https://github.com/user-attachments/assets/f8d5b957-640e-452e-b3fd-0ea0ea22bd26" />
-- Admin user management page
-  <img width="1890" height="886" alt="image" src="https://github.com/user-attachments/assets/2f9492af-07e7-4179-a42a-12a28602c964" />
-
-## Getting Started (Local)
-1. Clone the repo
-2. Setup MySQL database + import SQL
-3. Configure DB credentials
-4. Run on Apache/Nginx (or XAMPP/MAMP)
-
-For Testing:
-| Identity | Username | Password     |
-|----------|----------|--------------|
-| Student  | S1       | a32165487A   |
-| Student  | S2       | a12345678A   |
-| Teacher  | T3       | 12312312aA   |
-| Admin    | A1       | 12345678aA   |
+```mermaid
+flowchart TD
+  A[Login Page] -->|POST user.ID + password| B[Auth (PHP)]
+  B --> C{Valid?}
+  C -->|No| D[Error Message]
+  C -->|Yes| E[Create Session: user_id]
+  E --> F{Role by ID prefix}
+  F -->|A| G[Admin Page]
+  F -->|T| H[Teacher Features]
+  F -->|S| I[Student Features]
+  H --> J[Content / Assessment / Polling]
+  I --> K[Content Download / Submissions]
