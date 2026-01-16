@@ -78,9 +78,7 @@ flowchart TD
   I --> K[Content Download / Submissions]
 ```
 
----
-
-## Database Schema
+### Database Schema
 `user`
 Stores login identity and profile fields.
 
